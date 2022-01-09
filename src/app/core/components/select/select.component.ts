@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Option } from 'src/app/dashboard/brands/models/option.model';
 
 @Component({
@@ -12,7 +13,10 @@ export class SelectComponent implements OnInit {
   @Input() title: string;
   @Input() options: Option[];
   @Output() selectChange = new EventEmitter<any>();
-  constructor() { }
+  public form: FormGroup;
+  constructor(private fb: FormBuilder) {
+    this.initForm();
+   }
 
   ngOnInit(): void {
   }
@@ -20,6 +24,13 @@ export class SelectComponent implements OnInit {
   // tslint:disable-next-line:typedef
   onSelectChange(selection) {
     this.selectChange.emit(selection.value);
+  }
+
+  // tslint:disable-next-line:typedef
+  initForm() {
+    this.form =  this.fb.group({
+      field: new FormControl('', [Validators.required]),
+    });
   }
 
 }
