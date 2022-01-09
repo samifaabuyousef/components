@@ -1,0 +1,19 @@
+<div class="form-input">
+    <div class="box" >
+        <input type="text" class="search-input" [(ngModel)]="searchTerm" (ngModelChange) = "search(searchTerm)"
+          placeholder="search for group" id="search-icon" #input>
+        <div class="radios-group" [formGroup]="groupsForm">
+            <mat-radio-group class="box-group">
+                <div *ngFor="let group of labels_display" class="radio-item">
+                    <input type="radio" [value]="group.id" class="radio" ngDefaultControl formControlName="groups">
+                    <label class="label" >
+                        {{group.name}}
+                    </label>
+                </div>
+            </mat-radio-group>
+        </div>
+    </div>
+    <small class="text-danger" *ngIf="groupsForm.controls['groups'].touched &&  groupsForm.controls['groups'].errors?.required">
+    This field is required</small>
+
+</div>

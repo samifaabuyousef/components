@@ -1,0 +1,17 @@
+
+    <img class="logo" [src]="imgURL">
+    <label for="choose-file" class="custom-file-upload w-100" id="choose-file-label">
+       <div class="d-flex">
+          {{label}}
+          <button class="btn btn-default" (click)="removeImage()" *ngIf="imageExist">
+              X
+       </button>
+       </div>
+
+    </label>
+    <input
+
+    id="choose-file"
+    type="file"
+    (change)="onFileChange($event)"
+     accept=".jpg,.png"  style="display: none;"/>

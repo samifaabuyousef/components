@@ -1,0 +1,13 @@
+<div class="input-group anchor-type-menu-padding">
+    <span class="input-group-btn">
+        <button type="button" class="quantity-left-minus btn btn-number" (click)="decrement()"  data-type="minus" >
+          -
+        </button>
+    </span>
+    <input [ngModel]="counter" class="form-control custom-input" type="text" (ngModelChange)="onChangeEvent($event)" (blur)="onInput($event)" #input>
+    <span class="input-group-btn">
+        <button type="button" class="quantity-right-plus btn btn-number" (click)="increment()" data-type="plus" >
+          +
+        </button>
+    </span>
+</div>

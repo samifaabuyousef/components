@@ -1,0 +1,67 @@
+.dropdown-options {
+    max-height: 200px;
+    max-width: 100px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    margin-top: 4px;
+    background-color: #D1D8EB;
+    color: #454C5C;
+    border: 0;
+  }
+
+  .btn-secondary{
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+    background-color: #fff;
+    color: #454C5C;
+    border-radius: 5px;
+    border: 1px solid #fff;
+    &:disabled{
+      background-color: #F1F3F9;
+      border: 1px solid #D1D8EB;
+    }
+    &:hover:not(:disabled), &:focus:not(:disabled), &:not(:disabled):not(.disabled):active:focus{
+      background-color: #D1D8EB;
+      color: #454C5C;
+      box-shadow: unset;
+      border: 1px solid #D1D8EB;
+    }
+  }
+  .show>.btn-secondary.dropdown-toggle{
+    &, &:focus{
+      @extend .btn-secondary;
+      background-color: #D1D8EB;
+      border: 1px solid #D1D8EB;
+      img {
+        transform: rotate(180deg);
+      }
+    }
+  }
+
+  .dropdown-item{
+    &{
+      padding: .25rem .75rem;
+    }
+    &:focus, &:hover, &:active, &.active{
+      background-color: #F1F3F9;
+      color: #454C5C;
+    }
+  }
+
+  .dropdown-toggle{
+    &::after{
+      display: none;
+    }
+  }
+
+  .form-control{
+    &{
+      border-radius: 0;
+    }
+    &:focus{
+      box-shadow: unset;
+    }
+  }
+  .dropdown-menu{
+    min-width: 100%;
+  }

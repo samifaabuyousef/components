@@ -1,0 +1,45 @@
+:root{
+    --lightblack:#2e2c2caf;
+    --bggradient:linear-gradient(
+        to bottom,
+        rgb(159, 236, 255),#fff);
+    --bggradientdropdown:linear-gradient(
+    to bottom,
+    rgb(89, 255, 219),rgb(205, 255, 244));
+    --light-grey:rgba(255,255,255,0.7);
+}
+
+header .navbar-brand{
+    font-size: 1.2em;
+}
+header a{
+    font-size: 0.9em;
+    color: rgb(24, 23, 26);
+}
+header{
+    background:rgb(229, 250, 255);
+
+}
+
+header .nav-item:last-child{
+    padding-right: 5.5em;
+}
+header .nav-item{
+    padding: 0.7em;
+    
+}
+header .navbar-brand{
+    padding-left: 5rem;
+}
+header .navbar-brand img{
+    width: 150px;
+}
+
+.navbar-expand-lg .navbar-nav .nav-link {
+    font-size: 15px;
+}
+
+.active{
+    border-bottom: 2px solid #43A355;
+    
+}

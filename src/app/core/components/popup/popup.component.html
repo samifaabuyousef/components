@@ -1,0 +1,15 @@
+<div class="hcp-common-delete-campaign-popup">
+    <div class="hcp-popup hcp-popup--small hcp-popup--dark">
+      <div class="hcp-popup__row hcp-popup__row--between hcp-row">
+        <h2 class="hcp-title-h2">{{data.title}}</h2>
+        <button class="hcp-close-button" mat-dialog-close></button>
+      </div>
+      <div class="hcp-popup__row ">
+        <p class="hcp-body-text hcp-popup__text">{{data.description}}</p>
+      </div>
+      <div class="hcp-popup__row hcp-popup__row--end hcp-row hcp-buttons">
+        <button class="hcp-button hcp-button--outlined hcp-button-subtitle hcp-button--close" mat-dialog-close>Cancel</button>
+        <button class="hcp-button hcp-button--contained hcp-button-subtitle" [mat-dialog-close]="true"> Confirm </button>
+      </div>
+    </div>
+  </div>

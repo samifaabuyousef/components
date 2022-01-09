@@ -1,0 +1,12 @@
+<div class="hcp-common-personal-information-form-card__item">
+    <div class="hcp-input-box hcp-input-box--date">
+      <label class="hcp-body-text" for="birthDate">{{dateLabel}}</label>
+      <input [matDatepicker]="DatePicker" class="hcp-body-text" type="text" name="birthDate" placeholder="Select date" (dateChange)="onDateChange($event)">
+      <mat-datepicker-toggle
+        matSuffix
+        [for]="DatePicker"
+        class="hcp-input-box__btn">
+      </mat-datepicker-toggle>
+      <mat-datepicker #DatePicker></mat-datepicker>
+    </div>
+  </div>

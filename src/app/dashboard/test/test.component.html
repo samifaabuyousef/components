@@ -1,0 +1,108 @@
+<div class="hcp-main__header">
+  <h1 class="hcp-title-h1 hcp-icon hcp-icon--users"> Campaigns</h1>
+  <div class="button-header-container">
+        <span class="material-icons custom-material-icons" (click)="load()">
+          refresh
+        </span>
+
+    <a routerLink="new" class="hcp-button hcp-button--contained hcp-button-subtitle"> + Add Campaign</a>
+  </div>
+
+</div>
+<div class="hcp-main__block">
+  <div class="hcp-common-speciality-table">
+    <div class="hcp-common-speciality-table">
+      <div class="hcp-table-box hcp-table-box--fullscreen">
+        <div class="hcp-form__search">
+        </div>
+        <div class="hcp-table-block hcp-scrolled">
+          <div class="hcp-table-container">
+            <mat-table class="hcp-table" [dataSource]="dataSource" matSort>
+              <ng-container matColumnDef="id">
+                <mat-header-cell *matHeaderCellDef mat-sort-header>
+        <span class="hcp-body-text-highlight">
+          Id
+        </span>
+                </mat-header-cell>
+                <mat-cell *matCellDef="let element">{{element.id}}</mat-cell>
+              </ng-container>
+              <ng-container matColumnDef="clinicName">
+                <mat-header-cell *matHeaderCellDef mat-sort-header>
+         <span class="hcp-body-text-highlight">
+          Name
+        </span>
+                </mat-header-cell>
+                <mat-cell *matCellDef="let element" >{{element.clinicName}} </mat-cell>
+              </ng-container>
+              <ng-container matColumnDef="mobile">
+                <mat-header-cell *matHeaderCellDef mat-sort-header>
+        <span class="hcp-body-text-highlight">
+          mobile
+        </span>
+                </mat-header-cell>
+                <mat-cell *matCellDef="let element">{{element.mobile}}</mat-cell>
+              </ng-container>
+              <ng-container matColumnDef="city">
+                <mat-header-cell *matHeaderCellDef mat-sort-header>
+         <span class="hcp-body-text-highlight">
+          city
+        </span>
+                </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.city}}</mat-cell>
+              </ng-container>
+              <ng-container matColumnDef="status">
+                <mat-header-cell *matHeaderCellDef mat-sort-header>
+        <span class="hcp-body-text-highlight">
+          status
+        </span>
+                </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.status}}</mat-cell>
+              </ng-container>
+              <ng-container matColumnDef="actions">
+                <mat-header-cell *matHeaderCellDef></mat-header-cell>
+                <mat-cell *matCellDef="let row">
+                  <div class="hcp-tooltip">
+                    <button 
+                            class="hcp-button-edit hcp-icon hcp-icon--middle hcp-icon--edit"></button>
+                    <div class="hcp-tooltip__top">
+                      <p class="hcp-tips">edit</p>
+                      <i></i>
+                    </div>
+                  </div>
+                  <div class="hcp-tooltip">
+                    <button 
+                            class="hcp-button-delete hcp-icon hcp-icon--delete"></button>
+                    <div class="hcp-tooltip__top">
+                      <p class="hcp-tips">delete</p>
+                      <i></i>
+                    </div>
+                  </div>
+                </mat-cell>
+              </ng-container>        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+              <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+            </mat-table>
+            <div class="hcp-table-loading" *ngIf="(dataSource.loading$ | async)">
+              <mat-progress-spinner [diameter]="40" mode="indeterminate"></mat-progress-spinner>
+            </div>
+            <div class="hcp-no-data-in-table"
+                 *ngIf="! (dataSource.loading$ | async) && (dataSource.total$ | async) == 0">
+              <div class="hcp-no-data-in-table__container">
+                <div class="hcp-no-data-in-table__icon"></div>
+                <div class="hcp-no-data-in-table__discription">
+                  <span class="hcp-body-text-highlight">There is no data </span>
+                </div>
+              </div>
+            </div>
+
+            <mat-paginator [length]="dataSource.total$ | async" [pageSizeOptions]="[3, 5, 10, 20, 40]"
+             showFirstLastButtons></mat-paginator>
+
+            <!-- <mat-paginator [length]="dataSource?.total$" [pageSize]="3"
+            [pageSizeOptions]="[3, 5, 10]"></mat-paginator> -->
+</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+

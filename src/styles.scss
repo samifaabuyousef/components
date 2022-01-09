@@ -1,0 +1,651 @@
+@import "assets/general-components/tables.scss";
+@import "assets/general-components/normalize.scss";
+@import "assets/general-components/popup.scss";
+@import "assets/general-components/variables";
+@import "assets/general-components/mixins";
+@import "assets/general-components/general";
+@import "assets/general-components/button";
+@import "assets/general-components/inputs";
+@import "assets/general-components/tooltips";
+
+@mixin respond($breakpoint) {
+  @media (min-width: $breakpoint + px) {
+      @content;
+  }
+}
+
+@mixin respond-points($min, $max) {
+  @media (min-width: $min + px) and (max-width: $max + px) {
+      @content;
+  }
+}
+
+@mixin rtl($property, $ltr-value, $rtl-value) {
+  #{$property}: $ltr-value;
+   :host-context([dir=rtl]) & {
+      #{$property}: $rtl-value;
+  }
+}
+
+@function rem($size) {
+  $remSize: $size / 16px;
+  @return #{$remSize}rem;
+}
+
+@mixin flexCenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin respond($breakpoint) {
+  @media (max-width: $breakpoint + px) {
+    @content;
+  }
+}
+@mixin respond-points($min, $max) {
+  @media (min-width: $min + px) and (max-width: $max + px) {
+    @content;
+  }
+}
+
+@mixin card {
+  background: #FFFFFF;
+  box-shadow: 0px rem(2px) rem(8px) rgba(152, 142, 222, 0.08);
+  border-radius: rem(8px);
+  padding: rem(24px);
+}
+
+
+.footer { padding: 1.5rem 0; color: #fff; text-align: center; background-color: #333; }
+.backend-footer { padding: 1.5rem 0; color: #333; text-align: center; background-color: #ccc; }
+
+html, body { height: 100%; }
+
+
+.hcp-main__header {
+    justify-content: space-between;
+    margin-bottom: 0rem;
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-align: end;
+    align-items: center;
+  }
+
+
+  .hcp-title-h1 {
+    color: #6861AC;
+  }
+
+  .button-header-container {
+    display: flex;
+  
+    align-items: center;
+  }
+
+  .hcp-common-speciality-table {
+    width: 100%;
+    overflow: hidden;
+    margin-top: 20px;
+    height: auto;
+  
+    &__equalizer {
+      width: rem(40px);
+      height: rem(40px);  
+      border: none;
+      outline: none;
+    }
+  
+    .hcp-table__scrolled {
+      height: rem(725px);
+    }
+  
+    .hcp-table-box {
+      width: 100%;
+      background: #FFFFFF;
+      box-shadow: 0px 2px 8px rgba(152, 142, 222, 0.08);
+      border-radius: 8px;
+  
+      &__title {
+        .hcp-title-h2 {
+          color: #6861AC;
+        }
+  
+        .hcp-body-text {
+          color: #717889;
+        }
+      }
+  
+      &__block {
+        justify-content: space-between;
+        margin-top: rem(24px);
+      }
+    }
+  
+    .hcp-table {
+      max-width: 100%;
+      overflow: hidden;
+  
+      th:not(:first-child),
+      td:not(:first-child) {
+        text-align: center;
+  
+      }
+  
+      .mat-cell {
+        color: #717889;
+      }
+  
+      .mat-header-cell {
+        color: #454C5C;
+      }
+  
+      &--filter {
+        width: 100%;
+      }
+  
+    }
+  
+    .hcp-row {
+      align-items: center;
+      // justify-content: center;
+    }
+  
+    .hcp-tooltip .hcp-tooltip__top {
+      min-width: 50px;
+      top: -30px;
+      left: -10px;
+      text-transform: capitalize;
+    }
+  
+    .hcp-icon--prescription {
+      margin-left: rem(2px);
+    }
+  }
+  
+  .hcp-table-container {
+    padding-bottom: rem(10px);
+  }
+
+
+  .hcp-table {
+    width: 100%;
+    border-spacing: 0;
+    overflow-y: auto;
+    &__scrolled {
+        @include rtl(padding-right, 18px, 0);
+        @include rtl(padding-left, 0, 18px);
+    }
+    td {
+        border-collapse: collapse;
+        position: relative;
+        @include rtl(text-align, left, right);
+        .hcp-body-text {
+            color: $hcp-text-color;
+            &--clickable {
+                color: $hcp-clickable-text-color;
+                text-decoration: none;
+            }
+        }
+        .hcp-body-text-highlight {
+            &--active {
+                color: $hcp-button-color;
+            }
+            &--inactive {
+                color: $hcp-border-color;
+            }
+        }
+        border-bottom: rem(1px) solid $hcp-focus-border-color;
+    }
+
+    th {
+        padding: 0;
+        .hcp-body-text-highlight {
+            color: $hcp-title-color;
+        }
+        &:first-child {
+            @include rtl(text-align, left, right);
+        }
+        span {
+            display: block;
+        }
+    }
+    &--result,
+    &--filter {
+        width: calc( 100% - 24px);
+        td {
+            border: none;
+        }
+    }
+
+    .hcp-actions-col {
+        .hcp-icon {
+            margin-right: 10px;
+            //@include rtl(margin-right, 10px, 10px);
+        }
+    }
+}
+
+.hcp-table-box {
+    background: #fff;
+    width: 100%;
+    padding: rem(16px) rem(18px) 0 rem(24px);
+
+    &__header {
+        width: calc( 100% - 8px );
+        .hcp-title-h2 {
+            color: $hcp-title-color;
+        }
+        .hcp-body-text {
+            color: $hcp-secondary-text-color;
+        }
+    }
+    &__block {
+        width: 100%;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        @media (max-width: 768px) {
+            flex-direction: column;
+            align-items: flex-start;
+
+        }
+        flex-wrap: wrap;
+        margin-bottom: rem(15px);
+        .hcp-button--contained {
+            margin-left: auto;
+            @media (max-width: 768px) {
+                margin-left: 0;
+                margin-top: rem(10px);
+            }
+        }
+    }
+    &__radio-box-block {
+        display: flex;
+
+      justify-content: flex-start;
+        align-items: center;
+        @include rtl(margin-right, 0, 24px);
+        @include rtl(margin-left, 24px, 0);
+        @media (max-width: 768px) {
+            margin-top: rem(15px);
+        }
+        .hcp-body-text {
+            color: $hcp-title-color;
+            padding-bottom: 0;
+        }
+        .hcp-tips {
+            @include rtl(padding-right, 16px, 0);
+            @include rtl(padding-left, 0, 16px);
+        }
+        .hcp-radio-btn {
+            &:not(:first-child) {
+                @include rtl(margin-right, 24px, 0);
+                @include rtl(margin-left, 0, 24px);
+            }
+        }
+    }
+    label {
+        margin-bottom: 0;
+    }
+}
+
+.hcp-table-block {
+    overflow-x: auto;
+    padding-bottom: 10px; //??
+}
+
+.hcp-table-loading {
+  min-height: rem(100px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hcp-no-data-in-table {
+    min-height: rem(300px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &__container {
+        max-width: rem(220px);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    &__icon {
+        width: rem(75px);
+        height: rem(40px);
+        background-size: cover;
+    }
+    &__discription {
+        text-align: center;
+        margin-top: rem(20px);
+        .hcp-body-text-highlight {
+            color: $hcp-title-color;
+        }
+        .hcp-body-text {
+            color: $hcp-text-color;
+            margin-top: rem(8px);
+        }
+    }
+}
+
+
+.hcp-main {
+  padding: rem(30px);
+  // max-width: rem(1220px);
+  width: 100%;
+  margin: 0 auto;
+
+  &__header {
+    margin-bottom: rem(30px);
+    display: flex;
+    align-items: flex-end;
+
+    .hcp-title-h1 {
+      color: $hcp-selected-color;
+
+      &--dark {
+        color: #454C5C;
+      }
+    }
+
+    .hcp-icon {
+      display: flex;
+      align-items: center;
+
+      &:before {
+        display: inline-block;
+        @include rtl(margin-right, 10px, 0);
+        @include rtl(margin-left, 0, 10px);
+        background-size: cover;
+      }
+
+      &--home:before {
+        content: "";
+        width: rem(20px);
+        height: rem(20px);
+        background: url("/assets/images/hcp-house-icon.svg") no-repeat center center;
+        background-size: cover;
+
+      }
+
+      &--setting {
+        &:before {
+          content: "";
+          width: rem(22px);
+          height: rem(22px);
+          background: url("/assets/images/icons/hcp-settings-icon.svg") no-repeat center center;
+          background-size: cover;
+        }
+      }
+
+      &--people {
+        &:before {
+          content: "";
+          width: rem(20px);
+          height: rem(20px);
+          background: url("/assets/images/icons/hcp-multiple-users-silhouette.svg") no-repeat center center;
+          background-size: cover;
+          filter: invert(43%) sepia(30%) saturate(837%) hue-rotate(206deg) brightness(88%) contrast(90%);
+        }
+      }
+
+      &--writing {
+        &:before {
+          content: "";
+          width: rem(20px);
+          height: rem(22px);
+          background: url("/assets/images/icons/hcp-writing-icon.svg") no-repeat center center;
+          background-size: cover;
+          filter: invert(43%) sepia(30%) saturate(837%) hue-rotate(206deg) brightness(88%) contrast(90%);
+        }
+
+      }
+
+      &--sponsor:before {
+        content: "";
+        width: rem(21px);
+        height: rem(20px);
+        background: url('/assets/images/icons/hcp-money-icon.svg') no-repeat center center;
+        background-size: cover;
+      }
+      &--poc:before {
+        content: "";
+        width: rem(21px);
+        height: rem(20px);
+        background: url('/assets/images/icons/POC.svg') no-repeat center center;
+        background-size: cover;
+      }
+      &--brand:before {
+        content: "";
+        width: rem(21px);
+        height: rem(20px);
+        background: url('/assets/images/icons/POC.svg') no-repeat center center;
+        background-size: cover;
+      }
+      &--users:before {
+        content: "";
+        width: rem(21px);
+        height: rem(20px);
+        background: url('/assets/images/icons/users.svg') no-repeat center center;
+        background-size: cover;
+      }
+      &--topic:before {
+        content: "";
+        width: rem(21px);
+        height: rem(20px);
+        background: url('/assets/images/icons/topic.svg') no-repeat center center;
+        background-size: cover;
+      }
+
+      &--content:before {
+        content: "";
+        width: rem(21px);
+        height: rem(20px);
+        background: url('/assets/images/icons/content.svg') no-repeat center center;
+        background-size: cover;
+      }
+
+      &--tag:before {
+        content: "";
+        width: rem(21px);
+        height: rem(20px);
+        background: url('/assets/images/icons/tag.svg') no-repeat center center;
+        background-size: cover;
+      }
+
+
+      &--specility:before {
+        content: "";
+        width: rem(21px);
+        height: rem(20px);
+        background: url('/assets/images/icons/speciality.svg') no-repeat center center;
+        background-size: cover;
+      }
+
+      &--procdure:before {
+        content: "";
+        width: rem(21px);
+        height: rem(20px);
+        background: url('/assets/images/icons/nodes.svg') no-repeat center center;
+        background-size: cover;
+      }
+
+      &--curated:before {
+        content: "";
+        width: rem(21px);
+        height: rem(20px);
+        background: url('/assets/images/icons/curated.svg') no-repeat center center;
+        background-size: cover;
+      }
+
+      &--condition:before {
+        content: "";
+        width: rem(21px);
+        height: rem(20px);
+        background: url('/assets/images/icons/condition.svg') no-repeat center center;
+        background-size: cover;
+      }
+
+
+      &--man:before {
+        content: "";
+        width: rem(16px);
+        height: rem(22px);
+        background: url('/assets/images/icons/hcp-sponsor-man.svg') no-repeat center center;
+        background-size: cover;
+      }
+
+      &--megaphone:before {
+        content: "";
+        width: rem(22px);
+        height: rem(22px);
+        background: url('/assets/images/icons/hcp-megaphone-icon.svg') no-repeat center center;
+      }
+
+      &--user-wheel:before {
+        content: "";
+        width: rem(22px);
+        height: rem(22px);
+        background: url('/assets/images/icons/hcp-user-wheel.svg') no-repeat center center;
+        background-size: cover;
+        filter: invert(43%) sepia(30%) saturate(837%) hue-rotate(206deg) brightness(88%) contrast(90%);
+      }
+    }
+  }
+
+  &__block-title {
+    display: flex;
+    align-items: center;
+    margin-bottom: rem(24px);
+
+    .hcp-title-h1 {
+      color: $hcp-title-color;
+    }
+
+    .hcp-body-text {
+      color: $hcp-border-color;
+    }
+  }
+
+  &__row {
+    width: 100%;
+    display: flex;
+
+    &--space-between {
+      justify-content: space-between;
+    }
+  }
+
+  &__row-item {
+    &:not(:first-child) {
+      @include rtl(margin-left, 24px, 0);
+      @include rtl(margin-right, 0, 24px);
+    }
+
+    &--one-column {
+      width: 100%;
+    }
+
+    &--two-column {
+      width: 50%;
+    }
+
+    .hcp-card:not(:first-child) {
+      margin-top: rem(24px);
+    }
+  }
+
+  &__block {
+    display: block;
+    margin-top: rem(24px);
+
+    &--white-box {
+      width: 100%;
+      height: 100vh;
+      background: #FFFFFF;
+      box-shadow: 0px 2px 8px rgba(152, 142, 222, 0.08);
+      border-radius: 8px;
+      padding-top: rem(64px);
+
+      .hcp-input-box {
+        margin-top: 24px;
+      }
+
+      h1 {
+        text-align: center;
+        color: #454C5C;
+        padding-bottom: rem(64px);
+      }
+    }
+
+    .hcp-row {
+      align-items: flex-end;
+
+      &--between {
+        justify-content: space-between;
+      }
+
+      &--end {
+        justify-content: flex-end;
+      }
+    }
+  }
+
+  &__btn-box {
+    display: flex;
+    margin-top: rem(24px);
+
+    &--end {
+      justify-content: flex-end;
+    }
+
+    &--space-between {
+      justify-content: space-between;
+    }
+
+    .hcp-button {
+      &:not(:first-child) {
+        @include rtl(margin-left, 24px, 0);
+        @include rtl(margin-right, 0, 24px);
+      }
+    }
+  }
+
+  &__step-box {
+    max-width: rem(570px);
+    width: 100%;
+    margin: 0 auto;
+  }
+}
+
+.hcp-ml-auto {
+  @include rtl(margin-left, auto, 0);
+  @include rtl(margin-right, 0, auto);
+}
+
+.hcp-mr-auto {
+  @include rtl(margin-right, auto, 0);
+  @include rtl(margin-left, 0, auto);
+}
+
+.hcp-mt-24 {
+  margin-top: rem(24px);
+}
+
+  
+    
+  
+*::-webkit-scrollbar {
+  width: 1em;
+}
+ 
+
+ 
+*::-webkit-scrollbar-thumb {
+  background-color: #e4e4e4;
+  width: 10px;
+  border-radius: 5px;
+}

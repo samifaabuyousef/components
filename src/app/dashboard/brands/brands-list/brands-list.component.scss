@@ -1,0 +1,14 @@
+mat-cell.hcp-actions-col {
+    overflow: visible;
+  }
+
+  .hcp-tooltip .hcp-tooltip__top {
+    top: -30px;
+    left: 50%;
+    transform: translateX(calc(-50% - 7px));
+  }
+  .mat-cell > div.with-image {
+    width: 100%;
+    display: flex;
+    align-items: center;
+  }

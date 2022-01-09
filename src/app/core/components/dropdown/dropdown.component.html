@@ -1,0 +1,28 @@
+<div ngbDropdown #dropdown="ngbDropdown" class="d-inline-block mt-3 mr-3 dropdown" autoClose="outside">
+    <button class="btn btn-secondary dropdown-toggle" id="dropdownMenuButton" ngbDropdownToggle
+            [disabled]="disabled">
+          <span *ngIf="value && value['optionTitle']!== null; else dropdownTitle">
+              {{ value["optionTitle"] }}
+            <img src="./assets/images/icons/keyboard_arrow_down-24px.svg">
+          </span>
+               <ng-template #dropdownTitle>
+              <span class="option-title">
+                  {{ title }}
+                <img src="./assets/images/icons/keyboard_arrow_down-24px.svg">
+              </span>
+          </ng-template>
+       </button>
+     <div ngbDropdownMenu aria-labelledby="dropdownBasic1" class="dropdown-options">
+      <span>
+            <button ngbDropdownItem class="dropdown-item form-control" [class.active]="value && value.optionTitle && value.optionTitle === option[optionNameField]"
+              *ngFor="let option of options"
+              (click)="
+                onOptionSelected({
+                  optionTitle: option[optionNameField],
+                  optionValue: option[optionValueField]
+                }) ">
+              {{ option[optionNameField] }}
+            </button>
+          </span>
+    </div>
+  </div>

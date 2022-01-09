@@ -1,0 +1,28 @@
+@import '../../../../assets/general-components/variables';
+@import '../../../../assets/general-components/mixins';
+
+::ng-deep {
+  .mat-calendar-table-header{
+    color: getColorWithOpacity(#000, 0.87);
+  }
+  .mat-datepicker-content{
+    background-color: $hcp-dark-background-color;
+  }
+  .mat-calendar-body-today:not(.mat-calendar-body-selected){
+    border-color: $hcp-selected-color;
+  }
+  .mat-calendar-body-selected{
+    background-color: getColorWithOpacity($hcp-scrollbar-thumb-color, 0.08);
+    color: $hcp-selected-color;
+  }
+  .mat-calendar-body-cell:not(.mat-calendar-body-disabled):hover>
+  .mat-calendar-body-cell-content:not(.mat-calendar-body-selected){
+    background-color: getColorWithOpacity($hcp-scrollbar-thumb-color, 0.08);
+  }
+  .mat-datepicker-toggle-active{
+    color: $hcp-selected-color;
+  }
+  .cdk-focused>*, .cdk-program-focused>*{
+    background-color: transparent!important;
+  }
+}

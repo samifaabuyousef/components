@@ -1,0 +1,43 @@
+ <mat-toolbar color="primary" class="bg-dark">
+  <mat-toolbar-row>
+      <button mat-icon-button mat-icon-button (click)="toggleSideBar()" >
+          <mat-icon style="color: #43A355">menu</mat-icon>
+      </button>
+
+      <a class="navbar-brand" [routerLink]="['/home']">
+        Evacuation Control Panel
+      </a>
+
+      <div fxFlex fxLayout="row" fxLayoutAlign="flex-end">
+          <ul fxLayout="row" fxLayoutGap="20px">
+              <li>
+              <button routerLink='/backend/dashboard' mat-icon-button>
+                  <mat-icon>dashboard</mat-icon> 
+              </button>
+             </li>
+              <li>
+                  <button  routerLink='/backend/dashboard/test' mat-icon-button>
+                      <mat-icon>settings</mat-icon>
+                  </button>
+              </li>
+              <li>
+                  <button mat-icon-button>
+                      <mat-icon>help_outline</mat-icon>
+                  </button>
+              </li>
+              <li>
+                  <button mat-button [matMenuTriggerFor]="menu">
+                    <img style="width: 35px;" src="../../../assets/t1.jpg" alt="">
+                  </button>
+                  <mat-menu #menu="matMenu">
+                      <button mat-menu-item>
+                          <mat-icon>exit_to_app</mat-icon>
+                          Sign out
+                      </button>
+                  </mat-menu>
+
+              </li>
+          </ul>
+      </div>
+  </mat-toolbar-row>
+</mat-toolbar>

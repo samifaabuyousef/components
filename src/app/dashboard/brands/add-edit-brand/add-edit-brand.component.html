@@ -1,0 +1,113 @@
+<div class="hcp-table-loading loader-edit-page" *ngIf="loading">
+  <mat-progress-spinner
+    [diameter]="40"
+    mode="indeterminate"
+  ></mat-progress-spinner>
+</div>
+
+
+  <h2 class="hcp-title-h2">{{ pageTitle }}</h2>
+  <div [formGroup]="form">
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="form-card top-details">
+          <h5>Details</h5>
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="form-group">
+                <label for="title" class="required-field">English Name</label>
+                <input
+                  formControlName="generic_name"
+                  type="text"
+                  class="form-control"
+                  id="title"
+                />
+                <span
+                  *ngIf="
+                    form.controls['generic_name'].touched &&
+                    form.controls['generic_name'].errors?.required
+                  "
+                  class="hcp-body-text hcp-error-field"
+                  >This field is required</span
+                >
+                <span
+                  *ngIf="
+                    form.controls['generic_name'].touched &&
+                    form.controls['generic_name'].errors?.maxlength
+                  "
+                  class="hcp-body-text hcp-error-field"
+                  >the max title length is
+                  {{
+                    form.controls["generic_name"].errors?.maxlength
+                      .requiredLength
+                  }}
+                  character
+                </span>
+              </div>
+            </div>
+            <div class="col-sm-12">
+              <div class="form-group">
+                <label for="title" class="required-field">Arabic Name</label>
+                <input
+                  formControlName="name"
+                  type="text"
+                  class="form-control"
+                  id="name"
+                />
+                <span
+                  *ngIf="
+                    form.controls['name'].touched &&
+                    form.controls['name'].errors?.required
+                  "
+                  class="hcp-body-text hcp-error-field"
+                  >This field is required</span
+                >
+                <span
+                  *ngIf="
+                    form.controls['name'].touched &&
+                    form.controls['name'].errors?.maxlength
+                  "
+                  class="hcp-body-text hcp-error-field"
+                  >the max title length is
+                  {{ form.controls["name"].errors?.maxlength.requiredLength }}
+                  character
+                </span>
+              </div>
+            </div>
+            <div class="col-sm-12">
+              <div class="form-group">
+                <label for="">label</label>
+                <app-dropdown [options]="option"
+                [title]="'TestTitle'"
+                [optionValueField]="'id'"
+                [optionNameField]="'name'"
+                (optionSelected)="selectedOption($event)"></app-dropdown>
+              </div>
+            </div>
+
+            <div class="col-sm-12">
+              <div class="form-group">
+                <app-upload></app-upload>
+              </div>
+            </div>
+            <div class="col-sm-12">
+              <div class="form-group">
+                <app-select
+                [options]="option"
+                (selectChange)="selectedChanges($event)"></app-select>
+              </div>
+            </div>
+
+            <div class="col-sm-12">
+              <div class="form-group">
+                <app-datepicker
+                [dateLabel]="'Date'"
+                (dateSelected)="getDate($event)"></app-datepicker>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
