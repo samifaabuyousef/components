@@ -1,14 +1,17 @@
-#components
-*Breadcrumb Component
-*Confirmation Popup Component
-*Dropdown Component
-*Image Uploader Component
-*Select/MultipleSelect Component
-*Datepicker Component
-*Radio Group with search Component
-*Input Counter Component
+## Components
+
+  * Breadcrumb Component
+  * Confirmation Popup Component
+  * Dropdown Component
+  * Image Uploader Component
+  * Select/MultipleSelect Component
+  * Datepicker Component
+  * Radio Group with search Component
+  * Input Counter Component
 To check run npm Install and use the route http://localhost:4200/main/dashboard/ to reach the dashboard where brands will be in the side bar you will find the components in add route
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.2.3.
+
+# Components
 
 ## Development server
 
